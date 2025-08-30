@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class=""> <!-- Start with no class, JS will add 'dark' if needed -->
+<html lang="en" class="">
+<!-- Start with no class, JS will add 'dark' if needed -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Om Kale | Code & Creativity</title>
     <!-- Webpage Icon (Favicon) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23000000'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle' dy='.35em'>OK</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23000000'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle' dy='.35em'>OK</text></svg>">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -41,7 +43,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10;
+            z-index: 50;
+            /* Increased z-index for mobile menu */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -119,7 +122,6 @@
             color: #ffffff;
         }
 
-
         .header.scrolled {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(5px);
@@ -131,22 +133,11 @@
             /* dark:bg-gray-900 with opacity */
         }
 
-        .header.scrolled .main-nav a {
-            color: #4A5568;
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
         }
 
-        .dark .header.scrolled .main-nav a {
-            color: #9CA3AF;
-            /* dark mode scrolled link color */
-        }
-
-        .header.scrolled .main-nav a:hover {
-            color: #3498DB;
-        }
-
-        .dark .header.scrolled .main-nav a:hover {
-            color: #38BDF8;
-        }
 
         /* Hero Section Styling */
         #home {
@@ -155,7 +146,8 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 6rem 2rem 2rem;
+            padding: 8rem 2rem 4rem;
+            /* Adjusted padding for header */
             overflow: hidden;
         }
 
@@ -772,44 +764,176 @@
 
         /* --- END FOOTER LOGO STYLES --- */
 
+        /* --- STYLES FOR ATTRACTIVE DARK MODE ABOUT SECTION --- */
+        .dark #about {
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%), #111827;
+            position: relative;
+            overflow: hidden;
+            /* Ensures gradient doesn't spill out */
+        }
+
+        .dark #about h2 {
+            background: linear-gradient(90deg, #A78BFA, #F1C40F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .dark #about .grid .text-3xl {
+            color: #A78BFA;
+            /* A nice purple accent */
+        }
+
+        .dark .about-image-container img {
+            box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.3), 0 0 15px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark .skill-tag {
+            background-color: rgba(255, 255, 255, 0.05);
+            /* Semi-transparent white */
+            backdrop-filter: blur(12px);
+            /* Frosted glass effect */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Subtle border */
+            color: #E5E7EB;
+            /* Lighter text color */
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
                 padding: 1rem 1.5rem;
             }
 
+            .content-section {
+                padding: 40px 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                /* Smaller title on mobile */
+            }
+
+            #home {
+                padding: 6rem 1.5rem 4rem; /* Adjusted padding */
+            }
+
+            /* --- HERO SECTION MOBILE - DESKTOP LIKE --- */
             .hero-content {
-                flex-direction: column;
-                /* Stack on mobile */
-                text-align: center;
+                flex-direction: row;
+                gap: 1.5rem;
+                align-items: center;
             }
 
             .hero-text-left {
-                text-align: center;
+                flex-basis: 55%;
                 padding-right: 0;
-            }
-
-            .hero-character-area {
-                justify-content: center;
-                /* Center on mobile */
-                margin-top: 2rem;
-                transform: translateX(0);
-                /* Reset the transform */
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-column:first-child .skill-card {
-                justify-content: flex-start;
                 text-align: left;
             }
 
+            .hero-text-left h1 {
+                font-size: clamp(1.75rem, 7vw, 2.5rem); /* Responsive font size */
+            }
+
+            .hero-text-left h2 {
+                font-size: 0.875rem; /* 14px */
+            }
+             .hero-text-left p {
+                font-size: 0.8rem; /* 12.8px */
+                margin: 0;
+                max-width: none;
+            }
+            .cta-button {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.9rem;
+                margin-top: 1.5rem;
+            }
+
+            .hero-character-area {
+                flex-basis: 45%;
+                justify-content: center;
+                transform: translateX(0);
+            }
+
+            .know-me-box {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .know-me-box h3 {
+                font-size: 1rem;
+            }
+
+            .know-me-box p {
+                font-size: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+            .know-me-box a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+
+            #about .grid {
+                gap: 3rem;
+                /* Reduce gap on mobile */
+            }
+
+            #about h2 {
+                font-size: 2.25rem;
+                /* Adjust heading size */
+            }
+
+            .about-image-container {
+                margin-top: 2rem;
+            }
+
+            /* Adjust skill tags for mobile to prevent overflow */
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .skill-tag[style*="right: -6%"] {
+                top: 5%;
+                right: -5%;
+            }
+
+            .skill-tag[style*="left: -10%"] {
+                top: 35%;
+                left: -8%;
+            }
+
+            .skill-tag[style*="bottom: 10%"] {
+                bottom: 5%;
+                right: -4%;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .skills-column:first-child .skill-card {
+                /* Reset alignment for consistency in the two-column layout */
+                justify-content: center; 
+                text-align: center;
+            }
+
+            /* IMPROVEMENT: Making skill cards more compact and vertical on mobile */
+            .skill-card {
+                padding: 1.5rem 1rem; /* More vertical padding */
+                gap: 0.75rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            .skill-card h3 {
+                font-size: 0.875rem; /* 14px */
+            }
+
             .central-bulb {
-                margin: 2rem 0;
-                order: -1;
-                /* Move bulb to top on mobile */
+                display: none; /* Hide bulb on mobile to create a clean 2-column skill layout */
             }
 
             .skills-column.from-left .scroll-animate,
@@ -821,55 +945,13 @@
                 transform: translateY(0);
             }
         }
-
-        /* --- STYLES FOR ATTRACTIVE DARK MODE ABOUT SECTION --- */
-
-        /* 1. Add a subtle radial gradient (aurora effect) to the background */
-        .dark #about {
-            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%), #111827;
-            position: relative;
-            overflow: hidden;
-            /* Ensures gradient doesn't spill out */
-        }
-
-        /* 2. Make the main heading a gradient text */
-        .dark #about h2 {
-            background: linear-gradient(90deg, #A78BFA, #F1C40F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-
-        /* 3. Highlight the key stats with an accent color */
-        .dark #about .grid .text-3xl {
-            color: #A78BFA;
-            /* A nice purple accent */
-        }
-
-        /* 4. Give the image a subtle glow instead of a harsh shadow */
-        .dark .about-image-container img {
-            box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.3), 0 0 15px -5px rgba(0, 0, 0, 0.5);
-        }
-
-        /* 5. Apply glassmorphism to the floating skill tags */
-        .dark .skill-tag {
-            background-color: rgba(255, 255, 255, 0.05);
-            /* Semi-transparent white */
-            backdrop-filter: blur(12px);
-            /* Frosted glass effect */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            /* Subtle border */
-            color: #E5E7EB;
-            /* Lighter text color */
-        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-200 antialiased">
 
     <header id="header" class="header">
-        <a href="#home" class="logo">
+        <a href="#home" class="logo z-50">
             <span class="logo-text-part text-gray-800 dark:text-gray-200">LogicL</span><span
                 class="gradient-text">oo</span><span class="logo-text-part text-gray-800 dark:text-gray-200">p</span>
         </a>
@@ -882,7 +964,7 @@
             </nav>
             <!-- Theme Toggle Button -->
             <button id="theme-toggle" type="button"
-                class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 z-50">
                 <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -894,6 +976,34 @@
                     </path>
                 </svg>
             </button>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2.5 z-50">
+                <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" id="hamburger-icon" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+                <svg class="w-6 h-6 text-gray-800 dark:text-gray-200 hidden" id="close-icon" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="absolute top-0 left-0 w-full h-screen bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg -translate-x-full md:hidden">
+            <nav class="flex flex-col items-center justify-center h-full gap-8">
+                <a href="#about"
+                    class="mobile-nav-link text-2xl font-bold text-gray-800 dark:text-gray-300">About</a>
+                <a href="#projects"
+                    class="mobile-nav-link text-2xl font-bold text-gray-800 dark:text-gray-300">Projects</a>
+                <a href="#skills"
+                    class="mobile-nav-link text-2xl font-bold text-gray-800 dark:text-gray-300">Skills</a>
+                <a href="#contact"
+                    class="mobile-nav-link text-2xl font-bold text-gray-800 dark:text-gray-300">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -928,7 +1038,6 @@
                         <h3>Know Me More</h3>
                         <p>I'm Om Kale, a Python developer who architects solutions, not just code. I turn complex
                             problems into clean, efficient, and scalable applications that deliver real-world results.
-
                         </p>
                         <a href="#about">About Me &rarr;</a>
                     </div>
@@ -938,7 +1047,7 @@
 
         <div class="content-wrapper">
             <section id="about" class="content-section">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 items-center">
                     <!-- Left Column: Text Content -->
                     <div class="scroll-animate">
                         <h2
@@ -951,7 +1060,7 @@
                             <a href="#contact" class="cta-button-filled">Let's Talk</a>
                             <a href="#projects" class="cta-button-outlined">Explore Projects</a>
                         </div>
-                        <div class="flex items-center gap-8 mt-12 text-left animate-child"
+                        <div class="grid grid-cols-3 gap-4 md:gap-8 mt-12 text-center md:text-left animate-child"
                             style="animation-delay: 0.6s;">
                             <div>
                                 <span class="text-3xl font-bold text-black dark:text-white">0</span>
@@ -1011,23 +1120,24 @@
                         style="animation-delay: 0.2s;">Each project tells a story — here’s what I’ve built along the
                         way!</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- CHANGE: Updated grid layout for mobile -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
 
                     <!-- Project Card 1 -->
                     <div
                         class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 scroll-animate">
                         <img src="future love predictor.png" alt="Project 1 Screenshot" class="w-full h-auto"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/EBF4FF/3498DB?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Future Love Predictor 💖🔮</h3>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">A fun Python program that predicts your future with your crush using random chances and playful messages.</p>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-md md:text-xl font-bold text-gray-900 dark:text-white mb-2">Future Love Predictor 💖🔮</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 hidden sm:block">A fun Python program that predicts your future with your crush using random chances and playful messages.</p>
                             <a href="https://github.com/omkale1006-ai/Future-Love-Predictor/commits?author=omkale1006-ai"
-                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
-                                <span>GitHub Code</span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -1037,18 +1147,16 @@
                         style="transition-delay: 0.1s;">
                         <img src="customer(kirana)_project.png" alt="Project 2 Screenshot" class="w-full h-auto"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/EBF4FF/3498DB?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Smart Kirana Manager</h3>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">A Python-based store management system that
-                                records customer details, manages inventory, and generates bills — making your kirana
-                                shop smarter and faster.</p>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-md md:text-xl font-bold text-gray-900 dark:text-white mb-2">Smart Kirana Manager</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 hidden sm:block">A Python-based store management system for customer details, inventory, and billing.</p>
                             <a href="https://github.com/omkale1006-ai/Om-s-Kirana-Store---Customer-Billing-Inventory-Management-System"
-                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
-                                <span>GitHub Code</span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -1057,18 +1165,16 @@
                         style="transition-delay: 0.2s;">
                         <img src="Ultimate_password_generator.png" alt="Project 3 Screenshot" class="w-full h-auto"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/EBF4FF/3498DB?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2"> Ultimate Password
-                                Generator</h3>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4"> Instantly create strong, secure, and
-                                unique passwords — your first line of defense against cyber threats.</p>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-md md:text-xl font-bold text-gray-900 dark:text-white mb-2">Password Gen</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 hidden sm:block">Instantly create strong and secure passwords for your online accounts.</p>
                             <a href="https://github.com/omkale1006-ai/Ultimate-Password-Generator-/commits?author=omkale1006-ai"
-                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
-                                <span>GitHub Code</span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -1078,21 +1184,16 @@
                         <img src="quadratic_equation_solving.png"
                             alt="Project 4 Screenshot" class="w-full h-auto"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/EBF4FF/3498DB?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Quadratic Equation Solver
-                            </h3>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">A Python program that calculates and
-                                displays the roots of a quadratic equation
-                                𝑎𝑥<sup>2</sup>+bx+c=0
-                                . It handles all cases — two distinct real roots, one real root, or two complex
-                                roots — and ensures ‘a’ is non-zero for a valid quadratic equation.</p>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-md md:text-xl font-bold text-gray-900 dark:text-white mb-2">Equation Solver</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 hidden sm:block">A Python program that calculates the roots of a quadratic equation.</p>
                             <a href="https://github.com/omkale1006-ai/quadratic-equation-solver-python/commits?author=omkale1006-ai"
-                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
-                                <span>GitHub Code</span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -1102,16 +1203,16 @@
                         <img src="rock_paper_scissor_project.png"
                             alt="Project 5 Screenshot" class="w-full h-auto"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/EBF4FF/3498DB?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Rock Paper Python</h3>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">A fun Python-based Rock, Paper, Scissors game where you challenge the computer and see who takes the crown — simple, fast, and addictive.</p>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-md md:text-xl font-bold text-gray-900 dark:text-white mb-2">Rock Paper Python</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 hidden sm:block">A fun Python-based Rock, Paper, Scissors game where you challenge the computer.</p>
                             <a href="https://github.com/omkale1006-ai/Rock-Paper-Scissors-game/commits?author=omkale1006-ai"
-                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
-                                <span>GitHub Code</span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -1121,16 +1222,16 @@
                         <img src="quiz_game_project.png"
                             alt="Project 6 Screenshot" class="w-full h-auto"
                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/EBF4FF/3498DB?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Python True/False Quiz Game </h3>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">A fun and interactive quiz game built entirely in Python, designed to test knowledge through engaging true/false questions with instant feedback.</p>
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-md md:text-xl font-bold text-gray-900 dark:text-white mb-2">Quiz Game</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 hidden sm:block">An interactive quiz game built in Python to test knowledge with true/false questions.</p>
                             <a href="https://github.com/omkale1006-ai/Python-True-False-Quiz-Game/commits?author=omkale1006-ai"
-                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+                                class="github-button inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
-                                <span>GitHub Code</span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -1253,9 +1354,9 @@
                         Let's connect. You can reach out to me via email below.
                     </p>
                 </div>
-                <div class="flex justify-center items-center gap-8 mt-8 scroll-animate">
+                <div class="flex justify-center items-center gap-6 md:gap-8 mt-8 scroll-animate">
                     <a href="mailto:kaleom5757@gmail.com"
-                        class="social-link bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 animate-child">
+                        class="social-link animate-child">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1264,21 +1365,21 @@
                         </svg>
                     </a>
                     <a href="https://www.linkedin.com/in/om-kale-patil1006" target="_blank"
-                        class="social-link bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 animate-child">
+                        class="social-link animate-child">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                         </svg>
                     </a>
                     <a href="https://github.com/omkale1006-ai?tab=repositories" target="_blank"
-                        class="social-link bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 animate-child">
+                        class="social-link animate-child">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                     </a>
                     <a href="tel:7775983924"
-                        class="social-link bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 animate-child">
+                        class="social-link animate-child">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1316,7 +1417,6 @@
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
         const themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Function to set the theme
         const setTheme = (isDark) => {
             if (isDark) {
                 document.documentElement.classList.add('dark');
@@ -1331,7 +1431,6 @@
             }
         };
 
-        // Check initial theme from localStorage or system preference
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const savedTheme = localStorage.getItem('theme');
 
@@ -1341,11 +1440,33 @@
             setTheme(false);
         }
 
-        // Add click listener to the button
         themeToggleBtn.addEventListener('click', () => {
             const isDark = document.documentElement.classList.contains('dark');
             setTheme(!isDark);
         });
+
+        // --- MOBILE MENU SCRIPT ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('-translate-x-full');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            // Prevent body scroll when menu is open
+            document.body.classList.toggle('overflow-hidden');
+        };
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
 
         // --- SCROLL ANIMATION SCRIPT ---
         const scrollElements = document.querySelectorAll('.scroll-animate');
@@ -1359,38 +1480,25 @@
 
         const displayScrollElement = (element) => {
             element.classList.add('visible');
-            // Stagger children animation
             const children = element.querySelectorAll('.animate-child');
             children.forEach((child, index) => {
-                child.style.animationDelay = `${(index + 1) * 0.2}s`;
+                const delay = child.style.animationDelay || `${index * 0.2}s`;
+                child.style.animationDelay = delay;
             });
-        };
-
-        const hideScrollElement = (element) => {
-            element.classList.remove('visible');
         };
 
         const handleScrollAnimation = () => {
             scrollElements.forEach((el) => {
                 if (elementInView(el, 1.25)) {
                     displayScrollElement(el);
-                } else {
-                    // Optional: hide element when it's out of view
-                    // hideScrollElement(el); 
                 }
             })
         }
 
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-        });
-
-        // Trigger on load
+        window.addEventListener('scroll', handleScrollAnimation);
         handleScrollAnimation();
-
-
     </script>
 </body>
 
-</html> 
+</html>
 
